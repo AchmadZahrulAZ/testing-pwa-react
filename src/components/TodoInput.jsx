@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, updateTodo } from '../redux/todos/actions';
+import { addTodo, updateTodo } from '../redux/async/todos/actions';
+import { v4 as uuidv4 } from "uuid";
 
 const TodoInput = ({ editMode, setEditMode, currentTodo, setCurrentTodo }) => {
   const [text, setText] = useState('');
@@ -26,7 +27,7 @@ const TodoInput = ({ editMode, setEditMode, currentTodo, setCurrentTodo }) => {
       setEditMode(false); // Kembali ke mode tambah
       setCurrentTodo(null); // Reset todo yang sedang diedit
     } else {
-      dispatch(addTodo({ id: Date.now(), text: text, completed: false }));
+      dispatch(addTodo({ id: uuidv4(), text: text, completed: false }));
     }
     setText(''); // Reset input
   };

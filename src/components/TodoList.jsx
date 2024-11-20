@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteTodo } from '../redux/todos/actions';
+import { fetchTodos, deleteTodo, toggleTodo } from '../redux/async/todos/actions';
 
 const TodoList = ({ setEditMode, setCurrentTodo }) => {
-  const todos = useSelector((state) => state.todo.todos);
+  const { todos, loading, error, isSuccess } = useSelector((state) => state.todo);
   const lang = useSelector((state) => state.lang.language);
+
   const dispatch = useDispatch();
+
+  // get data pertama kali
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
+  // get data ketika isSuccess true
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(fetchTodos());
+    }
+  }, [isSuccess]);
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+
+  if (todos.length === 0) {
+    return <div>No todos found.</div>;
+  }
 
   const translations = {
     en: { deleteButton: 'Delete', editButton: 'Edit' },
@@ -31,6 +56,7 @@ const TodoList = ({ setEditMode, setCurrentTodo }) => {
               cursor: 'pointer',
               textDecoration: todo.completed ? 'line-through' : 'none',
             }}
+            onClick={() => dispatch(toggleTodo(todo.id, todo.completed))} // Panggil toggleTodo
           >
             {todo.text}
           </span>

@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "text": "123",
+      "id": "9bc82ce3-1e88-45de-b0e2-6419cc060def"
+    },
+    {
+      "id": "d350267d-44d2-413a-9b7d-9cb8562c21ee",
+      "text": "asd",
+      "completed": false
+    },
+    {
+      "id": "39e240a9-1513-43fd-ab0b-c438948f3c5e",
+      "text": "qwe",
+      "completed": false
+    }
+  ]
+}
