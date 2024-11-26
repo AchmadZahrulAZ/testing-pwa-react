@@ -4,7 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import todoReducer from './async/todos/reducer';
+import todoReducer from './todos/reducer';
 import langReducer from './lang/reducer';
 
 const encryptor = encryptTransform({

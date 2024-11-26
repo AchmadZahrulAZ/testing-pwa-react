@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTodos, deleteTodo, toggleTodo } from '../redux/async/todos/actions';
+import { deleteTodo } from '../redux/todos/actions';
 
 const TodoList = ({ setEditMode, setCurrentTodo }) => {
   const { todos, loading, error, isSuccess } = useSelector((state) => state.todo);
@@ -8,17 +8,17 @@ const TodoList = ({ setEditMode, setCurrentTodo }) => {
 
   const dispatch = useDispatch();
 
-  // get data pertama kali
-  useEffect(() => {
-    dispatch(fetchTodos());
-  }, [dispatch]);
+  // // get data pertama kali
+  // useEffect(() => {
+  //   dispatch(fetchTodos());
+  // }, [dispatch]);
 
-  // get data ketika isSuccess true
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(fetchTodos());
-    }
-  }, [isSuccess]);
+  // // get data ketika isSuccess true
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     dispatch(fetchTodos());
+  //   }
+  // }, [isSuccess]);
 
   if (loading) {
     return <div>Loading...</div>

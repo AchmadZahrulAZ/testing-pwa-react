@@ -15,16 +15,8 @@ const App = () => {
           <div className="col-md-6">
             <div className="card shadow">
               <div className="card-body">
-                <TodoInput
-                  editMode={editMode}
-                  setEditMode={setEditMode}
-                  currentTodo={currentTodo}
-                  setCurrentTodo={setCurrentTodo}
-                />
-                <TodoList
-                  setEditMode={setEditMode}
-                  setCurrentTodo={setCurrentTodo}
-                />
+                <TodoInput editMode={editMode} setEditMode={setEditMode} currentTodo={currentTodo} setCurrentTodo={setCurrentTodo} />
+                <TodoList setEditMode={setEditMode} setCurrentTodo={setCurrentTodo} />
               </div>
             </div>
           </div>
